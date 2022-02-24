@@ -1,7 +1,7 @@
 # MODIFY ME TO IMPLEMENT YOUR SOLUTION
 # TO PROBLEM 1: Word Frequency
 #
-# NAME:         FIXME
+# NAME:         Jingming Yan
 # ASSIGNMENT:   Project 3: Arrays & Maps
 
 from operator import itemgetter
@@ -19,7 +19,18 @@ import json
 # Your solution may use string & file functions.
 # Hint: see https://www.techiedelight.com/remove-punctuations-string-python/
 def word_frequencies(filename):
+    file = open(filename, 'r')
+    text = file.read().lower()
+    file.close()
+    text = text.replace("'", "")
+    for c in (string.punctuation + string.digits + "\n"):
+        text = text.replace(c, ' ')
     d = {}
+    for word in text.split():
+        if word in d:
+            d[word] += 1
+        else:
+            d[word] = 1
     return d
 
 def print_map_by_value(map):
